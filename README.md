@@ -4,9 +4,9 @@ The original files were provided by Udacity.
 
 ## Table of Contents
 
-* [How to Run](#How)
+* [How to Run](#How-toRun)
 * [License](#License)
-* [Skills Used](#Skills)
+* [Skills Used](#Skills-Used)
 
 ## How to Run
 
