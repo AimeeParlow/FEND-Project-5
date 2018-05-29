@@ -53,7 +53,7 @@ $(function() {
     });
 
     /* TODO: Write a new test suite named "The menu" */	
-    describe('The menu', function() {		
+    describe('The menu', function() {
 
 		/* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
@@ -68,11 +68,11 @@ $(function() {
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
-          */		
+          */
 		function clickThis(){
 		$('.icon-list').click();
 		}
-		
+
         it('should be shown by a click and hid when clicked again', function() {
 			clickThis();
             expect(document.body.classList).not.toContain('menu-hidden');
@@ -82,9 +82,9 @@ $(function() {
     });
 
 
-    /* TODO: Write a new test suite named "Initial Entries" */	
+    /* TODO: Write a new test suite named "Initial Entries" */
 	describe('Initial Entries', function() {
-		
+
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
@@ -92,27 +92,48 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 		beforeEach(function(done) {
-			loadFeed(0, function(){			
+			loadFeed(0, function(){
 			done();
 			});
-		}); 		
-		
+		});
+
 		const feedEntry = $('.feed .entry-link');
 		it('should have at least one entry', function(done) {
 			expect(feedEntry.children.length).not.toBe(0);
 			done();
-		});		
+		});
 
 	});
-	
-	
-    /* TODO: Write a new test suite named "New Feed Selection" */
 
-	
+
+    /* TODO: Write a new test suite named "New Feed Selection" */
+	describe('New Feed Selection', function() {
+
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+		beforeEach(function(done) {
+			loadFeed(0, function(){
+			done();
+			});
+		}); 
+		
+		let udacityBlog = $('.entry h2');
 
-	
+		beforeEach(function(done) {
+			loadFeed(1, function(){
+			done();
+			});
+		});
+
+		let cssTricks = $('.entry h2');
+		
+		it('are loaded and the contents were changed', function(done) {
+		expect(udacityBlog === cssTricks).toBe(false);
+		done();
+		});
+
+	});
+
 }());
