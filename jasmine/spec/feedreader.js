@@ -125,7 +125,7 @@ $(function() {
 
 		const secondFeedContent = $('.entry h2');
 		
-		it('is loaded and its contents were changed', function(done) {
+		it('should be loaded and its contents should be changed', function(done) {
 		expect(firstFeedContent === secondFeedContent).toBe(false);
 		done();
 		});
