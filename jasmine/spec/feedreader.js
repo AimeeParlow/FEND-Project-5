@@ -8,7 +8,7 @@
  * since some of these tests may require DOM elements. We want
  * to ensure they don't run until the DOM is ready.
  */
- 
+
 $(function() {
     /* This is our first test suite - a test suite just contains
     * a related set of tests. This suite is all about the RSS
@@ -52,7 +52,7 @@ $(function() {
         });
     });
 
-    /* TODO: Write a new test suite named "The menu" */	
+    /* TODO: Write a new test suite named "The menu" */
     describe('The menu', function() {
 
 		/* TODO: Write a test that ensures the menu element is
@@ -125,7 +125,7 @@ $(function() {
 
 		const secondFeedContent = $('.entry h2');
 		
-		it('is loaded and its content was changed', function(done) {
+		it('is loaded and its contents were changed', function(done) {
 		expect(firstFeedContent === secondFeedContent).toBe(false);
 		done();
 		});
