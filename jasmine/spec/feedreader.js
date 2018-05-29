@@ -61,7 +61,7 @@ $(function() {
          * hiding/showing of the menu element.
          */
         it('should be hidden by default', function() {
-			expect(document.body.classList).toContain('menu-hidden');
+			expect($('body').hasClass('menu-hidden')).toBe(true);
         });
 
          /* TODO: Write a test that ensures the menu changes
@@ -69,18 +69,17 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-		function clickThis(){
+		function clickMenu(){
 		$('.icon-list').click();
 		}
 
-        it('should be shown by a click and hid when clicked again', function() {
-			clickThis();
-            expect(document.body.classList).not.toContain('menu-hidden');
-			clickThis();
-            expect(document.body.classList).toContain('menu-hidden');
+        it('should be shown on click and hid when clicked again', function() {
+			clickMenu(); //menu is shown
+            expect($('body').hasClass('menu-hidden')).toBe(false);
+			clickMenu(); //menu is hid
+            expect($('body').hasClass('menu-hidden')).toBe(true);
         });
-    });
-
+	});
 
     /* TODO: Write a new test suite named "Initial Entries" */
 	describe('Initial Entries', function() {
@@ -93,18 +92,15 @@ $(function() {
          */
 		beforeEach(function(done) {
 			loadFeed(0, function(){
-			done();
+			done();//feed loading is done
 			});
 		});
 
-		const feedEntry = $('.feed .entry-link');
-		it('should have at least one entry', function(done) {
-			expect(feedEntry.children.length).not.toBe(0);
+		it('should be shown', function(done) {
+			expect($('a .entry-link').children.length).not.toBe(0);
 			done();
 		});
-
 	});
-
 
     /* TODO: Write a new test suite named "New Feed Selection" */
 	describe('New Feed Selection', function() {
@@ -115,25 +111,23 @@ $(function() {
          */
 		beforeEach(function(done) {
 			loadFeed(0, function(){
-			done();
+			done(); //first feed link were loaded
 			});
 		}); 
 		
-		let udacityBlog = $('.entry h2');
+		const firstFeedContent = $('.entry h2');
 
 		beforeEach(function(done) {
 			loadFeed(1, function(){
-			done();
+			done(); //second feed link were loaded
 			});
 		});
 
-		let cssTricks = $('.entry h2');
+		const secondFeedContent = $('.entry h2');
 		
-		it('are loaded and the contents were changed', function(done) {
-		expect(udacityBlog === cssTricks).toBe(false);
+		it('is loaded and its content was changed', function(done) {
+		expect(firstFeedContent === secondFeedContent).toBe(false);
 		done();
 		});
-
 	});
-
 }());
